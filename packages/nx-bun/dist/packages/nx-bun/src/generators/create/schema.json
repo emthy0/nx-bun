@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "Create",
+  "title": "This uses Bun template under the hood while then configured to work with NX",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "template": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of project",
+      "enum": ["library", "application"],
+      "default": "application",
+      "x-prompt": "Is this an application or a library?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d",
+      "x-priority": "important"
+    },
+    "projectNameAndRootFormat": {
+      "description": "Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).",
+      "type": "string",
+      "enum": ["as-provided", "derived"]
+    },
+    "rootProject": {
+      "description": "Create node application at the root of the workspace",
+      "type": "boolean",
+      "default": false,
+      "hidden": true,
+      "x-priority": "internal"
+    },
+    "publishable": {
+      "type": "boolean",
+      "default": false,
+      "description": "Generate a publishable library.",
+      "x-priority": "important"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import it, like @myorg/my-awesome-lib. Required for publishable library.",
+      "x-priority": "important"
+    }
+  },
+  "required": ["name", "template", "type"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "library" },
+          "publishable": { "const": true }
+        },
+        "required": ["type", "publishable"]
+      },
+      "then": {
+        "required": ["importPath"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "application" }
+        },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "publishable": { "const": false },
+          "importPath": { "const": "" }
+        }
+      }
+    }
+  ]
+}

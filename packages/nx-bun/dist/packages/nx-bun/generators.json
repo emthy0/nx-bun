@@ -1,0 +1,30 @@
+{
+  "generators": {
+    "create": {
+      "factory": "./src/generators/create/generator",
+      "schema": "./src/generators/create/schema.json",
+      "description": "Use bun create generator and transform it instantly into nx-bun",
+      "x-use-standalone-layout": true
+    },
+    "init": {
+      "factory": "./src/generators/init/init",
+      "schema": "./src/generators/init/schema.json",
+      "description": "init generator"
+    },
+    "lib": {
+      "factory": "./src/generators/lib/generator",
+      "schema": "./src/generators/lib/schema.json",
+      "description": "lib generator"
+    },
+    "application": {
+      "factory": "./src/generators/app/app",
+      "schema": "./src/generators/app/schema.json",
+      "description": "Application generator"
+    },
+    "convert-to-bun": {
+      "factory": "./src/generators/convert-to-bun/generator",
+      "schema": "./src/generators/convert-to-bun/schema.json",
+      "description": "Convert to Bun"
+    }
+  }
+}
