@@ -1,6 +1,6 @@
 {
   "name": "@nx-bun/task-worker-runner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "IDGAF-1.0",
   "type": "commonjs",
   "main": "./index.cjs",

@@ -174,6 +174,10 @@ function createArgs(
     args.push(`--outdir=./${options.outputPath}`);
   }
 
+  if (options.target) {
+    args.push(`--target=${options.target}`);
+  }
+
   if (options.compile) {
     args.push('--compile');
   }
