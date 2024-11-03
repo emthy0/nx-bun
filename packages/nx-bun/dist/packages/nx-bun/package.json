@@ -1,0 +1,23 @@
+{
+  "name": "@nx-bun/nx",
+  "version": "1.2.0",
+  "license": "IDGAF-1.0",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@nx/devkit": ">16.8.0 <18"
+  },
+  "repository": {
+    "url": "https://github.com/Jordan-Hall/nx-bun/tree/master/packages/nx-bun",
+    "type": "git"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "nx-migrations": {
+    "migrations": "./migrations.json"
+  }
+}
